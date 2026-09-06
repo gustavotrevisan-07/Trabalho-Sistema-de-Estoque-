@@ -1,3 +1,6 @@
+from builtins import ValueError, int
+
+
 class Produto:
     def __init__(self, codigo, nome, preco, quantidade):
         self.codigo = int(codigo)
@@ -21,7 +24,10 @@ class Produto:
         return self.codigo
 
     def atualizar_estoque(self, nova_quantidade):
-        pass
+        nova_quantidade = int(nova_quantidade)
+        if nova_quantidade < 0:
+            raise ValueError("A quantidade nao pode ser negativa.")
+        self.quantidade = nova_quantidade
 
     def to_csv_row(self):
         return [self.codigo, self.nome, self.preco, self.quantidade]
