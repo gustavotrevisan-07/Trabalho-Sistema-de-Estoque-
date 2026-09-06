@@ -1,3 +1,6 @@
+from builtins import float, int
+
+
 class Venda:
     def __init__(self, codigo, codigo_cliente, itens, valor_total=None):
         self.codigo = int(codigo)
@@ -19,7 +22,15 @@ class Venda:
             self.valor_total = float(valor_total)
 
     def calcular_total(self):
-        pass
+        total = 0 
+        for item in self.itens:
+            quantidade = int(item["quantidade"])
+            preco = float(item["preco_unitario"])
+
+            if quantidade <= 0 or preco <= 0:
+                raise ValueError("Os itens da venda devem ter quantidade e preço positivos.")
+            total += quantidade * preco
+        return total
 
     def itens_para_texto(self):
         partes = []
