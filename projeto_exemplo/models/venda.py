@@ -1,6 +1,3 @@
-from builtins import float, int
-
-
 class Venda:
     def __init__(self, codigo, codigo_cliente, itens, valor_total=None):
         self.codigo = int(codigo)
@@ -22,30 +19,46 @@ class Venda:
             self.valor_total = float(valor_total)
 
     def calcular_total(self):
-        total = 0 
+        total = 0.0
+
         for item in self.itens:
             quantidade = int(item["quantidade"])
             preco = float(item["preco_unitario"])
 
             if quantidade <= 0 or preco <= 0:
-                raise ValueError("Os itens da venda devem ter quantidade e preço positivos.")
+                raise ValueError(
+                    "Os itens da venda devem ter quantidade e preco positivos."
+                )
+
             total += quantidade * preco
+
         return total
 
     def itens_para_texto(self):
         partes = []
+
         for item in self.itens:
             partes.append(
-                f"{item['codigo_produto']}:{item['quantidade']}:{item['preco_unitario']}"
+                f"{item['codigo_produto']}:{item['quantidade']}:"
+                f"{item['preco_unitario']}"
             )
+
         return "|".join(partes)
 
     def to_csv_row(self):
-        return [self.codigo, self.codigo_cliente, self.itens_para_texto(), self.valor_total]
+        return [
+            self.codigo,
+            self.codigo_cliente,
+            self.itens_para_texto(),
+            self.valor_total,
+        ]
 
     def __str__(self):
-        valor_formatado = f"{self.valor_total:.2f}"
-        return f"Venda {self.codigo} | Cliente {self.codigo_cliente} | Total R$ {valor_formatado}"
+        return (
+            f"Venda {self.codigo} | Cliente {self.codigo_cliente} | "
+            f"Total R$ {self.valor_total:.2f}"
+        )
+
 
 def itens_de_texto(texto):
     itens = []
@@ -55,6 +68,7 @@ def itens_de_texto(texto):
 
     for parte in texto.split("|"):
         codigo_produto, quantidade, preco_unitario = parte.split(":")
+
         itens.append(
             {
                 "codigo_produto": int(codigo_produto),
@@ -64,6 +78,7 @@ def itens_de_texto(texto):
         )
 
     return itens
+
 
 def venda_from_csv_row(row):
     return Venda(
