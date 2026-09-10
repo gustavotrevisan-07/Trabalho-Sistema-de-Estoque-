@@ -49,67 +49,121 @@ def mostrar_menu():
 
 def executar_opcao(opcao, service):
     if opcao == 1:
-        pass
+        nome = input("Nome do cliente: ")
+        cliente = service.cadastrar_cliente(nome)
+        print(f"Cliente cadastrado com sucesso: {cliente}")
 
     elif opcao == 2:
-        pass
+        imprimir_registros(service.listar_clientes(), "Nenhum cliente cadastrado.")
 
     elif opcao == 3:
-        pass
+        codigo = ler_inteiro("Codigo do cliente: ")
+        cliente = service.buscar_cliente(codigo)
+        if cliente:
+            print(cliente)
+        else:
+            print("Cliente nao encontrado.")
 
     elif opcao == 4:
-        pass
+        codigo = ler_inteiro("Codigo do cliente a remover: ")
+        cliente = service.remover_cliente(codigo)
+        print(f"Cliente removido com sucesso: {cliente}")
 
     elif opcao == 5:
-        pass
+        nome = input("Nome do produto: ")
+        preco = ler_float("Preco do produto: R$ ")
+        quantidade = ler_inteiro("Quantidade inicial em estoque: ")
+        produto = service.cadastrar_produto(nome, preco, quantidade)
+        print(f"Produto cadastrado com sucesso: {produto}")
 
     elif opcao == 6:
-        pass
+        imprimir_registros(service.listar_produtos(), "Nenhum produto cadastrado.")
 
     elif opcao == 7:
-        pass
+        codigo = ler_inteiro("Codigo do produto: ")
+        produto = service.buscar_produto(codigo)
+        if produto:
+            print(produto)
+        else:
+            print("Produto nao encontrado.")
 
     elif opcao == 8:
-        pass
+        codigo = ler_inteiro("Codigo do produto: ")
+        nova_qtd = ler_inteiro("Nova quantidade em estoque: ")
+        produto = service.atualizar_estoque(codigo, nova_qtd)
+        print(f"Estoque atualizado: {produto}")
 
     elif opcao == 9:
-        pass
+        codigo = ler_inteiro("Codigo do produto a remover: ")
+        produto = service.remover_produto(codigo)
+        print(f"Produto removido com sucesso: {produto}")
 
     elif opcao == 10:
-        pass
+        imprimir_registros(service.listar_produtos_inverso(), "Nenhum produto cadastrado.")
 
     elif opcao == 11:
-        pass
+        imprimir_registros(service.listar_produtos_ordenados_por_id(), "Nenhum produto cadastrado.")
 
     elif opcao == 12:
-        pass
+        codigo = ler_inteiro("Codigo do produto (Busca Binaria): ")
+        produto = service.buscar_produto_binario(codigo)
+        if produto:
+            print(produto)
+        else:
+            print("Produto nao encontrado.")
 
     elif opcao == 13:
-        pass
+        cod_cliente = ler_inteiro("Codigo do cliente: ")
+        cod_produto = ler_inteiro("Codigo do produto: ")
+        quantidade = ler_inteiro("Quantidade vendida: ")
+        venda = service.realizar_venda_exemplo(cod_cliente, cod_produto, quantidade)
+        print(f"Venda realizada com sucesso: {venda}")
 
     elif opcao == 14:
-        pass
+        imprimir_registros(service.listar_vendas(), "Nenhuma venda na fila.")
 
     elif opcao == 15:
-        pass
+        venda = service.primeira_venda()
+        if venda:
+            print(f"Primeira venda da fila: {venda}")
+        else:
+            print("Nenhuma venda na fila.")
 
     elif opcao == 16:
-        pass
+        total = service.valor_total_estoque()
+        print(f"Valor total do estoque: R$ {total:.2f}")
 
     elif opcao == 17:
-        pass
+        total = service.valor_total_vendas()
+        print(f"Valor total das vendas: R$ {total:.2f}")
 
     elif opcao == 18:
-        pass
+        totais = service.clientes_e_valores_totais_gastos()
+        if not totais:
+            print("Nenhum cliente cadastrado.")
+        else:
+            for cliente, total in totais:
+                print(f"Cliente: {cliente} | Total Gasto: R$ {total:.2f}")
 
     elif opcao == 19:
-        pass
+        resultado = service.cliente_que_mais_gastou()
+        if resultado is None:
+            print("Nenhum cliente ou venda registrada.")
+        else:
+            cliente, total = resultado
+            print(f"Cliente que mais gastou: {cliente} | Total: R$ {total:.2f}")
 
     elif opcao == 20:
-        pass
+        resultado = service.produto_mais_vendido()
+        if resultado is None:
+            print("Nenhuma venda registrada.")
+        else:
+            produto, qtd = resultado
+            print(f"Produto mais vendido: {produto} | Quantidade vendida: {qtd}")
 
     elif opcao == 21:
-        pass
+        mensagem = service.desfazer_ultima_operacao()
+        print(mensagem)
 
     else:
         print("Opcao invalida. Tente novamente.")
