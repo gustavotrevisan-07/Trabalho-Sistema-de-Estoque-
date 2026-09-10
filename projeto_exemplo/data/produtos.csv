@@ -1,18 +1,19 @@
 codigo,nome,preco,quantidade
-1,Arroz branco tipo 1 5kg,27.50,40
-2,Feijao carioca 1kg,8.90,60
-3,Acucar cristal 1kg,5.20,50
-4,Cafe torrado e moido 500g,18.90,45
+1,Arroz branco tipo 1 5kg,27.5,39
+2,Feijao carioca 1kg,8.9,60
+3,Acucar cristal 1kg,5.2,50
+4,Cafe torrado e moido 500g,18.9,45
 5,Leite integral UHT 1L,5.39,80
-6,Refrigerante cola 2L,9.90,40
-7,Agua mineral sem gas 1.5L,3.50,60
-8,Farinha de trigo 1kg,6.80,35
-9,Macarrao espaguete 500g,4.80,55
+6,Refrigerante cola 2L,9.9,40
+7,Agua mineral sem gas 1.5L,3.5,60
+8,Farinha de trigo 1kg,6.8,35
+9,Macarrao espaguete 500g,4.8,55
 10,Oleo de soja 900ml,11.99,45
-11,Sal refinado 1kg,3.20,50
+11,Sal refinado 1kg,3.2,50
 12,Biscoito maisena 350g,6.59,45
-13,Chocolate ao leite 90g,7.90,30
+13,Chocolate ao leite 90g,7.9,30
 14,Detergente liquido neutro 500ml,2.89,40
-15,Sabao em po 1kg,14.90,25
-16,Papel higienico pacote com 4 rolos,12.90,35
-17,Shampoo 350ml,16.90,20
+15,Sabao em po 1kg,14.9,25
+16,Papel higienico pacote com 4 rolos,12.9,35
+17,Shampoo 350ml,16.9,20
+18,Monster,9.99,100
