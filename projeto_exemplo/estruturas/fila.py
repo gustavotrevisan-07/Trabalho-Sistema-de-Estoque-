@@ -20,7 +20,7 @@ class Fila:
     def remover_por_codigo(self, codigo):
         for indice, item in enumerate(self._lista_de_valores):
             if item.codigo == codigo:
-                return self._lista_de_valores(indice)
+                return self._lista_de_valores.pop (indice)
 
     def is_empty(self):
         return len(self._lista_de_valores) == 0
